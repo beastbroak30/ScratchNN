@@ -38,9 +38,9 @@ def load_model(filename_prefix):
     return W1, b1, W2, b2
 
 # Example usage:
-# W1, b1, W2, b2 = gradient_descent(X_train, Y_train, 0.10, 500, m, n)
-# save_model(W1, b1, W2, b2, 'model')
-# W1, b1, W2, b2 = load_model('model')
+#W1, b1, W2, b2 = gradient_descent(X_train, Y_train, 0.15, 400, m, n)
+#save_model(W1, b1, W2, b2, 'model')
+W1, b1, W2, b2 = load_model('model')
 
 def make_predictions(X, W1, b1, W2, b2):
     _, _, _, A2 = forward_prop(W1, b1, W2, b2, X)
@@ -58,3 +58,5 @@ def test_prediction(index, W1, b1, W2, b2):
     plt.gray()
     plt.imshow(current_image, interpolation='nearest')
     plt.show()
+    
+test_prediction(6, W1, b1, W2, b2)
