@@ -23,7 +23,7 @@ X_train = X_train / 255.
 
 X_train[:,0].shape
 
-# --- Model save/load utilities ---
+
 def save_model(W1, b1, W2, b2, filename_prefix):
     np.savetxt(filename_prefix + '_W1.txt', W1)
     np.savetxt(filename_prefix + '_b1.txt', b1)
@@ -47,16 +47,22 @@ def make_predictions(X, W1, b1, W2, b2):
     predictions = get_predictions(A2)
     return predictions
 
-def test_prediction(index, W1, b1, W2, b2):
-    current_image = X_train[:, index, None]
-    prediction = make_predictions(X_train[:, index, None], W1, b1, W2, b2)
-    label = Y_train[index]
+def test_prediction(image, label, W1, b1, W2, b2):
+
+    if image.ndim == 1:
+        image = image[:, None]
+    prediction = make_predictions(image, W1, b1, W2, b2)
     print("Prediction: ", prediction)
     print("Label: ", label)
-    
-    current_image = current_image.reshape((28, 28)) * 255
     plt.gray()
-    plt.imshow(current_image, interpolation='nearest')
+    plt.imshow(image.reshape(28, 28) * 255, interpolation='nearest')
     plt.show()
-    
-test_prediction(8, W1, b1, W2, b2)
+
+
+dit = 0 # Change this value to test a different digit (0-9)
+indices = np.where(Y_train == dit)[0]
+if len(indices) > 0:
+    test_idx = indices[0]
+    test_prediction(X_train[:, test_idx], Y_train[test_idx], W1, b1, W2, b2)
+else:
+    print(f"No sample with label {dit} found in training set.")
