@@ -13,6 +13,34 @@ This project implements a simple neural network from scratch (no deep learning l
 
 ---
 
+## How to Use `main.py`
+
+1. **Training and Saving the Model:**
+   - Uncomment the following lines in `main.py`:
+     ```python
+     W1, b1, W2, b2 = gradient_descent(X_train, Y_train, 0.15, 800, m, n)
+     save_model(W1, b1, W2, b2, 'model')
+     ```
+   - Comment out the line:
+     ```python
+     W1, b1, W2, b2 = load_model('model')
+     ```
+   - Run `main.py` to train and save the model weights.
+
+2. **Loading and Evaluating the Model:**
+   - Uncomment the line:
+     ```python
+     W1, b1, W2, b2 = load_model('model')
+     ```
+   - Comment out the training and saving lines above.
+   - To evaluate accuracy, use:
+     ```python
+     evaluate_accuracy(X_dev, Y_dev, W1, b1, W2, b2)
+     ```
+   - You can also use the digit testing feature by setting `digit_to_test`.
+
+> **Tip:** Only run training when you want to retrain the model. For testing and evaluation, just load the saved weights.
+
 ## Forward Propagation
 Given input $X \in \mathbb{R}^{784 \times m}$ (each column is an image):
 
