@@ -59,10 +59,17 @@ def test_prediction(image, label, W1, b1, W2, b2):
     plt.show()
 
 
-dit = 0 # Change this value to test a different digit (0-9)
+dit = 3 # Change this value to test a different digit (0-9)
 indices = np.where(Y_train == dit)[0]
 if len(indices) > 0:
     test_idx = indices[0]
     test_prediction(X_train[:, test_idx], Y_train[test_idx], W1, b1, W2, b2)
 else:
     print(f"No sample with label {dit} found in training set.")
+
+"""def evaluate_accuracy(X, Y, W1, b1, W2, b2):
+    predictions = make_predictions(X, W1, b1, W2, b2)
+    accuracy = np.sum(predictions == Y) / Y.size
+    print(f"Accuracy: {accuracy:.4f}")
+    return accuracy
+evaluate_accuracy(X_dev, Y_dev, W1, b1, W2, b2)"""
