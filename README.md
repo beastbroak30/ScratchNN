@@ -2,9 +2,7 @@
 
 This project implements a simple neural network from scratch (no deep learning libraries) to classify handwritten digits from the MNIST dataset.
 
-<blockquote>
-<strong>@beastbroak30</strong> This project was built from scratch as a personal learning journey. It took me more than 14 days to figure out and learn the math and code, and it was a real challenge to see how much can be achieved with just mathematics and NumPy. I plan to try porting this neural network to embedded systems may be not the best but my own anyways!
-</blockquote>
+
 
 ## Architecture
 - **Input layer:** 784 units (one for each pixel in a 28x28 image)
