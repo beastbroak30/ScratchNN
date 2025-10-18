@@ -39,46 +39,9 @@ This project implements a simple neural network from scratch (no deep learning l
 
 > **Tip:** Only run training when you want to retrain the model. For testing and evaluation, just load the saved weights.
 
-## Forward Propagation
-Given input $X \in \mathbb{R}^{784 \times m}$ (each column is an image):
 
-1. **Hidden layer pre-activation:**
-	$$ Z^{[1]} = W^{[1]} X + b^{[1]} $$
-	- $W^{[1]} \in \mathbb{R}^{10 \times 784}$
-	- $b^{[1]} \in \mathbb{R}^{10 \times 1}$
-2. **Hidden layer activation:**
-	$$ A^{[1]} = \text{ReLU}(Z^{[1]}) $$
-3. **Output layer pre-activation:**
-	$$ Z^{[2]} = W^{[2]} A^{[1]} + b^{[2]} $$
-	- $W^{[2]} \in \mathbb{R}^{10 \times 10}$
-	- $b^{[2]} \in \mathbb{R}^{10 \times 1}$
-4. **Output layer activation (softmax):**
-	$$ A^{[2]} = \text{softmax}(Z^{[2]}) $$
 
----
 
-## Backward Propagation
-Let $Y \in \mathbb{R}^{10 \times m}$ be the one-hot encoded labels.
-
-1. **Output error:**
-	$$ dZ^{[2]} = A^{[2]} - Y $$
-2. **Gradients for output layer:**
-	$$ dW^{[2]} = \frac{1}{m} dZ^{[2]} (A^{[1]})^T $$
-	$$ db^{[2]} = \frac{1}{m} \sum dZ^{[2]} $$
-3. **Hidden layer error:**
-	$$ dZ^{[1]} = (W^{[2]})^T dZ^{[2]} \odot \text{ReLU}'(Z^{[1]}) $$
-4. **Gradients for hidden layer:**
-	$$ dW^{[1]} = \frac{1}{m} dZ^{[1]} X^T $$
-	$$ db^{[1]} = \frac{1}{m} \sum dZ^{[1]} $$
-
----
-
-## Parameter Updates
-For learning rate $\alpha$:
-- $W^{[l]} := W^{[l]} - \alpha dW^{[l]}$
-- $b^{[l]} := b^{[l]} - \alpha db^{[l]}$
-
----
 
 ## Variable Shapes
 | Variable | Shape         | Description                |
